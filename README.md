@@ -10,6 +10,23 @@ Moov migrates virtual machines from **Veeam Backup & Replication** restore point
 
 ---
 
+## Download
+
+**v1.0.37 appliance image** - pick the format for your target hypervisor:
+
+- **QCOW2** (Proxmox VE, oVirt, KVM): [moov-appliance-v1.0.37.qcow2](https://moov.24xsiempre.com/moov-appliance-v1.0.37.qcow2)
+- **OVA** (HPE VM Essentials, and general import): [moov-appliance-v1.0.37.ova](https://moov.24xsiempre.com/moov-appliance-v1.0.37.ova)
+
+Verify the download with SHA-256:
+
+```
+sha256sum moov-appliance-v1.0.37.qcow2
+# 68e94c026398c7ff1ac5c3257637116f7a061ae3fd5b313e91a9f096ebf700de
+
+sha256sum moov-appliance-v1.0.37.ova
+# 829226c65335cb20baf0181e85c72177af4bbb8317f30c62d54312b4b642d251
+```
+
 ## Why Moov
 
 Migrating a fleet off VMware traditionally means long downtime windows, manual driver injection, and one VM at a time. Moov reads directly from Veeam restore points and streams them onto the target hypervisor, so a VM can be up and serving in minutes and hundreds of VMs can move in parallel.
