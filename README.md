@@ -138,6 +138,8 @@ The only inbound source is **Veeam Backup & Replication V13**, over its REST and
 7. **Plan a wave**: pick VMs, targets, and a migration mode, then launch and watch progress live.
 
 ![Moov web console - sign in](docs/images/console-login.png)
+![Migration Statistics](docs/images/migration-stats.png)
+![Migration Report](docs/images/migration-report.png)
 
 ## Features
 
