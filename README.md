@@ -29,7 +29,7 @@ sha256sum moov-appliance-v1.0.37.ova
 
 ## Why Moov
 
-Migrating a fleet off VMware traditionally means long downtime windows, manual driver injection, and one VM at a time. Moov reads directly from Veeam restore points and streams them onto the target hypervisor, so a VM can be up and serving in minutes and hundreds of VMs can move in parallel.
+Migrating VMs off VMware traditionally means long downtime windows, manual driver injection, and one VM at a time. Moov reads directly from Veeam restore points and streams them onto the target hypervisor, so a VM can be up and serving in minutes and hundreds of VMs can move in parallel.
 
 - **No vSphere dependency.** The source of every VM is Veeam (REST metadata or the published backup disk). Moov never connects to vCenter or ESXi.
 - **Guest preparation built in.** VirtIO drivers are injected and the QEMU Guest Agent (QGA) is installed automatically, so the migrated VM boots with working storage and network and reports status to the hypervisor. Modern Windows uses inbox drivers.
