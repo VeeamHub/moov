@@ -8,6 +8,7 @@
 
 Moov migrates virtual machines from **Veeam Backup & Replication** restore points onto modern KVM platforms - **Proxmox VE**, **oVirt / OLVM / RHV**, and **HPE VM Essentials** - without touching the source VMware vSphere environment during the migration. It closes the operational gap left by full-restore workflows: instant boot from the backup, automatic VirtIO driver handling, and concurrent waves of many VMs at once.
 
+THIS IS A COMMUMNITY TOOL AND NOT AN OFFICIAL VEEAM TOOL OR DEVELOPED BY VEEAM R&D
 ---
 
 ## Download
