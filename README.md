@@ -1,6 +1,6 @@
 # Moov
 
-![Release](https://img.shields.io/badge/release-v1.0.37-blue)
+![Release](https://img.shields.io/badge/release-v1.0.38-blue)
 ![Status](https://img.shields.io/badge/status-beta-yellow)
 ![Targets](https://img.shields.io/badge/targets-Proxmox%20VE%20%7C%20oVirt%20%7C%20HPE%20VME-informational)
 
@@ -13,19 +13,19 @@ THIS IS A COMMUMNITY TOOL AND NOT AN OFFICIAL VEEAM TOOL OR DEVELOPED BY VEEAM R
 
 ## Download
 
-**v1.0.37 appliance image** - pick the format for your target hypervisor:
+**v1.0.38 appliance image** - pick the format for your target hypervisor:
 
-- **QCOW2** (Proxmox VE, oVirt, KVM): [moov-appliance-v1.0.37.qcow2](https://moov.24xsiempre.com/moov-appliance-v1.0.37.qcow2)
-- **OVA** (HPE VM Essentials, and general import): [moov-appliance-v1.0.37.ova](https://moov.24xsiempre.com/moov-appliance-v1.0.37.ova)
+- **QCOW2** (Proxmox VE, oVirt, KVM): [moov-appliance-v1.0.38.qcow2](https://moov.24xsiempre.com/moov-appliance-v1.0.38.qcow2)
+- **OVA** (HPE VM Essentials, and general import): [moov-appliance-v1.0.38.ova](https://moov.24xsiempre.com/moov-appliance-v1.0.38.ova)
 
 Verify the download with SHA-256:
 
 ```
-sha256sum moov-appliance-v1.0.37.qcow2
-# 68e94c026398c7ff1ac5c3257637116f7a061ae3fd5b313e91a9f096ebf700de
+sha256sum moov-appliance-v1.0.38.qcow2
+# 
 
-sha256sum moov-appliance-v1.0.37.ova
-# 829226c65335cb20baf0181e85c72177af4bbb8317f30c62d54312b4b642d251
+sha256sum moov-appliance-v1.0.38.ova
+# 
 ```
 
 ## Why Moov
@@ -228,4 +228,4 @@ Coming soon.
 
 ## Status
 
-**First release - v1.0.37.** Moov is in beta status, migrating VMs across Proxmox VE, oVirt, and HPE VM Essentials. This release was validated end-to-end against all three targets - instant and cold migration, Linux and Windows guests (including multi-NIC), concurrent multi-VM waves, and the full appliance lifecycle from first boot to air-gapped operation. 
+**First release - v1.0.38.** Moov is in beta status, migrating VMs across Proxmox VE, oVirt, and HPE VM Essentials. This release was validated end-to-end against all three targets - instant and cold migration, Linux and Windows guests (including multi-NIC), concurrent multi-VM waves, and the full appliance lifecycle from first boot to air-gapped operation. 
