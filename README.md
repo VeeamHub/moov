@@ -22,10 +22,10 @@ Verify the download with SHA-256:
 
 ```
 sha256sum moov-appliance-v1.0.38.qcow2
-# 
+# 81d230852e7c5638d1e72e5202313e24ecaa2469dd634f4e66ab8e205b80d44f
 
 sha256sum moov-appliance-v1.0.38.ova
-# 
+# 17b9e3e3562c28c6ce1d761f302d87e351fac91e454ac79b1c9c428a1f12dc53
 ```
 
 ## Why Moov
@@ -54,7 +54,7 @@ Both modes run through the **Wave Engine**, which schedules many VMs concurrentl
 | **oVirt 4.5+ / OLVM / RHV** | REST + imageio upload; SSH/QMP for instant migration. |
 | **HPE VM Essentials (Morpheus 8.1.x / 9.x)** | Instant and cold migration onto MVM nodes. |
 
-Source: **Veeam Backup & Replication V13** REST API.
+Source: **Veeam Backup & Replication V13.x+** REST API.
 
 ## Guest OS compatibility
 
@@ -74,7 +74,7 @@ Helpers do heavy CPU, memory, and I/O work (`qemu-img`, `virt-v2v`, and sparsify
 
 **Also required**
 
-- A **Veeam Backup & Replication V13** server with the REST API enabled, and image-level backups of the VMs you want to migrate.
+- A **Veeam Backup & Replication V13.x+** server with the REST API enabled, and image-level backups of the VMs you want to migrate.
 - At least one **target hypervisor**: Proxmox VE 8/9, oVirt 4.5+ / OLVM / RHV, or HPE VM Essentials (Morpheus 8.1.x / 9.x).
 - **Network reachability**: the appliance reaches Veeam and the target hypervisor APIs; helpers reach the Core and the Veeam Mount Server; operators reach the console over HTTPS.
 - No internet access is required during migrations - Moov is air-gap friendly.
@@ -126,7 +126,7 @@ Moov is delivered as a single **appliance** with a web console. It has three mov
 - **Helpers** - disposable worker VMs that do the heavy lifting of each migration (serving the backup disk over NBD, conversion, boot). The appliance includes a built-in local helper; **additional helpers** deployed on the target hypervisors scale the migration horizontally. All helpers run the same appliance image and authenticate to the Core over mutual TLS.
 - **Targets** - the destination hypervisors (Proxmox VE, oVirt / OLVM / RHV, HPE VM Essentials), reached over their REST APIs plus SSH / libvirt where instant migration requires it.
 
-The only inbound source is **Veeam Backup & Replication V13**, over its REST and Data Integration APIs. The original VMware vSphere environment is never contacted.
+The only inbound source is **Veeam Backup & Replication V13.x+**, over its REST and Data Integration APIs. The original VMware vSphere environment is never contacted.
 
 ## Getting started
 
