@@ -254,6 +254,23 @@ block storage (LVM / iSCSI / ZFS) for both Instant and Cold.
 
 ---
 
+## Security
+
+Four independent audits were closed in this cycle. The work worth naming:
+
+- The privileged boundary that applies updates no longer trusts anything the
+  unprivileged service can write — it re-verifies signatures, hashes and file
+  ownership on its own before touching the system.
+- SSH host-key pinning is enforced on every path to every hypervisor, and a
+  changed host key is now a hard failure instead of something a later step could
+  quietly overwrite.
+- Credentials, secrets and log lines were audited for leakage; failed logins and
+  lockouts are recorded in the audit log.
+
+Dependency scanners are clean.
+
+---
+
 ## Compatibility
 
 | | Minimum | Recommended |
@@ -301,6 +318,25 @@ native Ceph RBD device, not a file path.
 With two backends of the same type registered (oVirt and OLVM), the migration
 landed on the one that was selected and nothing appeared on the other.
 
+**Windows guests.** A legacy BIOS/MBR Windows Server 2022 migrated Instant to
+HPE VM Essentials — it boots and its guest agent answers, which is what proves
+the guest preparation is no longer skipped for machines without an EFI
+partition. And a Windows Server 2022 domain controller migrated Cold to Proxmox
+came back with its **static IP restored** (address, mask, gateway and both DNS
+servers, read from the source registry during pre-flight). Note that the address
+is applied by a first-boot task a few minutes *after* Windows starts: the VM
+comes up on DHCP first and then switches. That is expected — do not read the
+first minutes as a lost configuration.
+
+**Three VMs in a single concurrent wave.** Launched together to Proxmox in
+Instant mode and all three ran in parallel, each ending with its own disk, its
+own MAC and its own address, with the guest agent answering on all three.
+
+**Cancel and retry.** A migration cancelled from the console stops within a
+second, survives a page reload, and the retry moves straight to the new attempt
+without the operator reloading anything. See the known limitation below about
+what the helper keeps.
+
 **In-place updates, against the real distribution point.** New version
 discovered from the signed channel, in-app notice and e-mail, download,
 signature and hash verification, apply, restart, and the anti-brick timer
@@ -319,3 +355,23 @@ d6e3d723768fe91540de38022c281cf72c039913c4042b2e1abbe86a470c4d2a  moov-appliance
 e940d287b7fcedce5a4f5c437aa6050487bac599772c2869c98daed1e947b096  moov-appliance-v1.0.38.vhdx
 ```
 
+---
+
+## Known limitations
+
+- **Cancelling a migration leaves resources behind on the helper.** The
+  appliance's own cleanup is correct — the backup is unpublished and Veeam
+  releases the mount — but the helper does not tear down its side: the iSCSI
+  session stays registered (retrying against a target that no longer exists),
+  the NBD export keeps running, and the job keeps occupying one of the helper's
+  concurrency slots. Nothing is lost and no data is at risk, but a helper
+  cancelled several times will eventually report itself as busy with work that
+  does not exist. **Workaround:** restart the Moov service on that helper —
+  **Connections › Helpers › Restart selected** — which clears all of it. A fix
+  is planned for a future release.
+- Restoring an old backup re-imports old helpers, which the compatibility gate
+  will then mark as blocking until they are updated. That is correct behaviour,
+  but it is better known in advance than discovered during the first migration
+  after a restore.
+- Restoring a backup onto a **new** appliance does not bring back Veeam or
+  hypervisor credentials without the recovery code — see the top of this note.
