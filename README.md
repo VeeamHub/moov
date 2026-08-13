@@ -228,4 +228,4 @@ Coming soon.
 
 ## Status
 
-**First release - v1.0.38.** Moov is in beta status, migrating VMs across Proxmox VE, oVirt, and HPE VM Essentials. This release was validated end-to-end against all three targets - instant and cold migration, Linux and Windows guests (including multi-NIC), concurrent multi-VM waves, and the full appliance lifecycle from first boot to air-gapped operation. 
+**Latest release - v1.0.38.** Moov is in beta status, migrating VMs across Proxmox VE, oVirt, and HPE VM Essentials. This release was validated end-to-end against all three targets - instant and cold migration, Linux and Windows guests (including multi-NIC), concurrent multi-VM waves, and the full appliance lifecycle from first boot to air-gapped operation. 
