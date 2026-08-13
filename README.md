@@ -79,6 +79,17 @@ Helpers do heavy CPU, memory, and I/O work (`qemu-img`, `virt-v2v`, and sparsify
 - **Network reachability**: the appliance reaches Veeam and the target hypervisor APIs; helpers reach the Core and the Veeam Mount Server; operators reach the console over HTTPS.
 - No internet access is required during migrations - Moov is air-gap friendly.
 
+**Supported:**
+
+- Veeam Data Platform Foundation (VUL)
+- Veeam Data Platform Advanced (VUL)
+- Veeam Data Platform Premium (VUL)
+- Evaluation and NFR licenses (full-featured by default)
+
+**Not supported:**
+
+- Veeam Backup & Replication Community Edition
+
 ## Connectivity & ports
 
 Moov reaches each system over its standard management API - it never contacts vSphere.
