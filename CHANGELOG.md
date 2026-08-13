@@ -22,12 +22,6 @@ Supersedes v1.0.37. Full note:
 
 ### ⚠️ Breaking
 
-- **Veeam Backup & Replication 13.1 is supported.** The REST API revision is negotiated from the server's 
-  own serverInfo build version instead of being pinned, so a 13.1 backend is addressed as 13.1 and a 13.0 
-  one as 13.0 — with no setting to choose. Until now the revision was fixed, and 13.1 broke the pre-flight 
-  scan outright: it sends creationTime without a timezone, which the parser rejected. If serverInfo cannot 
-  be read the default revision is kept, so negotiation never blocks a connection. 
-  Veeam 13.0 remains the minimum.
 - **Helpers older than 1.0.38 are refused.** The Core no longer dispatches work
   to them, and a helper that reports no version at all is refused too. Helpers
   speak protobuf, so an old helper silently ignores fields a new Core sends: the
@@ -38,6 +32,13 @@ Supersedes v1.0.37. Full note:
   updater. From v1.0.38 onwards updates are applied from the console.
 
 ### Added
+
+- **Veeam Backup & Replication 13.1 is supported.** The REST API revision is negotiated from the server's 
+  own serverInfo build version instead of being pinned, so a 13.1 backend is addressed as 13.1 and a 13.0 
+  one as 13.0 — with no setting to choose. Until now the revision was fixed, and 13.1 broke the pre-flight 
+  scan outright: it sends creationTime without a timezone, which the parser rejected. If serverInfo cannot 
+  be read the default revision is kept, so negotiation never blocks a connection. 
+  Veeam 13.0 remains the minimum.
 
 - **Restart hosts from the console.** The OS channel raised "reboot pending"
   and offered no way to act on it: the only restart lived in the appliance
